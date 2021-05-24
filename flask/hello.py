@@ -6,9 +6,9 @@ app = Flask(__name__)
 def index():
 	return render_template("base.html")
 
-@app.route("/toinenreitti")
-def toinen_sivu():
-        return "Hei toisesta reitistä!"
+@app.route("/about")
+def about():
+        return render_template("about.html")
 
 if __name__ == "__main__":
 	app.run(debug=True)
