@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+	{% if True %}
+		<h1>Terve maailma!</h1>
+	{% endif %}
+
+	{% if animals %}
+		<p>We have animals </p>
+		{% for animal in animals %}
+		<p>{{ animal }}</p>
+		{% endfor %}
+	{% else %}
+		<p>No animals yet, would you like to add some?</p>
+	{% endif %}
+{% endblock content%}
