@@ -1,11 +1,27 @@
 {% extends "base.html" %}
+
 {% block content %}
- <form>
-  <label for="fname">First name:</label><br>
-  <input type="text" id="fname" name="fname"><br>
-  <label for="lname">Last name:</label><br>
-  <input type="text" id="lname" name="lname"><br>
-  <label for="check">Check</label>
-  <input type=checkbox name=check>
-</form> 
-{% endblock content%}
+<h2>Login</h2>
+
+<form method=POST>
+	<label>name:<br>
+	<input type=text name="name"></label><br>
+
+	password:<br>
+	<input type=password name="password"><br>
+
+	email:<br>
+	<input type=email name="email"><br>
+
+	favourite day:<br>
+	<input type=date name="favday"><br>
+
+	<label>I like summer
+	<input type=checkbox name="likesummer"></label><br>
+
+	<input type=hidden name="csrf" value="9d3i<dsr4_3eghe#">
+	
+	<input type=submit>
+</form>
+
+{% endblock content %}
