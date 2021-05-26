@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+	<head>
+		{% set title = "Default Title" if not title else title %}
+		<title>{{ title }}</title>
+		<meta charset="utf-8">
+	</head>
+	<body>
+	<nav>
+		<a href="/">Frontpage</a> - 
+		<a href="/add">Add</a>
+	</nav>
+	<h1>{{ title }}</h1>
+	{% block content %}
+
+	{% endblock content %}
+	</body>
+</html>
