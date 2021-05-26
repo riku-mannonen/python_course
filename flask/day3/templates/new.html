@@ -4,9 +4,10 @@
 	<p>New comment</p>
 
 	<form method=POST>
-		{% for field in form %}
+		{% for field in form if not field.flags.hidden%}
 		<p>{{ field.label }}: {{ field }}</p>
 		{% endfor %}
 		<input type=submit>
 	</form>
 {% endblock content %}
+
