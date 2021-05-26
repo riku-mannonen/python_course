@@ -5,7 +5,16 @@
 	<title>Databases</title>
 </head>
 <body>
-	<h1>Databases</h2>
+	<nav>
+		<a href="/">Frontpage</a>
+		<a href="/new">Movie</a>
+		<a href="/msg">Message</a>
+	</nav>
+	{% if get_flashed_messages() %}                                         
+                        {% for message in get_flashed_messages() %}                     
+                                <p><b>{{ message }}</b></p>                             
+                        {% endfor %}
+                {% endif %}
 	{% block content %}
 	{% endblock %}
 </body>

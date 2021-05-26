@@ -1,11 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
-	<p>New comment</p>
+	<p>New movie</p>
 
 	<form method=POST>
-		{% for field in form if not field.flags.hidden%}
-		<p>{{ field.label }}: {{ field }}</p>
+		{% for field in form %}
+		<p>
+			{% if not field.flags.hidden %}
+				{{ field.label }}:
+			{% endif %} 
+			
+			{{ field }}
+		</p>
 		{% endfor %}
 		<input type=submit>
 	</form>
