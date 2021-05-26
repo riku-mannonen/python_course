@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Flashes</title>
+</head>
+<body>
+	<nav>
+		<a href="/">Frontpage</a> ---
+		<a href="/one">First flash!</a> ---
+		<a href="/two">Second flash!</a>
+	</nav>
+	{% if get_flashed_messages() %}                                         
+                        {% for message in get_flashed_messages() %}                     
+                                <p><b>{{ message }}</b></p>                             
+                        {% endfor %}
+                {% endif %}
+	{% block content %}
+	{% endblock %}
+</body>
+</html>
