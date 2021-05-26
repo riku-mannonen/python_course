@@ -18,16 +18,16 @@ class Task(db.Model):
 def initMe():
 	db.create_all()
 
-	comment = Comment(text="Have a nice day!", name= "Riku")
+	comment = Comment(text="Have a nice day!", name="Riku")
 	db.session.add(comment)
 
-	comment = Comment(text="Cold winds are rising", name= "Nuutti")
+	comment = Comment(text="Cold winds are rising", name="Riku")
 	db.session.add(comment)
 
-	task = Task(text="Go to gym", name= "Riku")
+	task = Task(text="Go to gym", name="Riku")
 	db.session.add(task)
 
-	task = Task(text="Cook some food", name="Riku")
+	task = Task(text="Cook some food", name="Tero")
 	db.session.add(task)
 
 	db.session.commit()
