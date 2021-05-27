@@ -1,0 +1,24 @@
+{% set title = "Loan list" %}
+{% extends "base.html" %}
+{% block content %}
+
+<table style width=100%>
+	<tr>
+		<th>Id</th>
+		<th>Item</th>
+		<th>Borrower</th>
+		<th></th>
+		<th></th>
+	</tr>
+{% for item in items %}
+	<tr>
+		<td>{{ item.id }}</td>
+		<td>{{ item.item }}</td>
+		<td>{{ item.borrower }}</td>
+		<td><a href="/edit/{{ item.id }}">Edit</a></td>
+		<td><a href="/delete/{{ item.id }}">Delete</a></td>
+	</tr>
+{% endfor %}
+</table>
+
+{% endblock content %}
