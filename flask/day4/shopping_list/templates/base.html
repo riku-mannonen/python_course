@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+	<head>
+		{% set title = "Default Title" if not title else title %}
+		<title>{{ title }}</title>
+		<meta charset="utf-8">
+		<meta name=viewport content="width=device-width, initial-scale=1"> 
+	</head>
+	<body>
+	<nav>
+		<a href="/">Home</a> - 
+		<a href="/add">Add</a>
+	</nav>
+
+	{% if get_flashed_messages() %}                                         
+                        {% for message in get_flashed_messages() %}                     
+                                <p><b>{{ message }}</b></p>                             
+                        {% endfor %}
+                {% endif %}
+
+	<h1>{{ title }}</h1>
+	{% block content %}
+
+	{% endblock content %}
+	</body>
+</html>
