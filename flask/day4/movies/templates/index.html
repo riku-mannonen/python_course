@@ -1,0 +1,8 @@
+
+{% set title = "Movies" %}
+{% extends "base.html" %}
+{% block content %}
+{% for movie in movies %}
+<p>{{ movie.name }} - <a href="{{ movie.id }}/edit">Edit</a></p>
+{% endfor %}<br>
+{% endblock content %}
