@@ -3,14 +3,22 @@
 
 {% block content %}
 
-	{% for book in books %}
-		<p>
-			<a href="/book/{{ book.id }}/edit">
-				{{ task.name }}
-			</a>
-			-
-			<a href="/book/{{ book.id }}/delete">Delete</a>
-		</p>
-	{% endfor %}
-	
+<table style width=100%>
+	<tr>
+		<th>Id</th>
+		<th>Book</th>
+		<th>Plot</th>
+		<th></th>
+		<th></th>
+	</tr>
+{% for book in books %}
+	<tr>
+		<td>{{ book.id }}</td>
+		<td>{{ book.name }}</td>
+		<td>{{ book.plot }}</td>
+		<td><a href="/edit/{{ book.id }}">Edit</a></td>
+		<td><a href="/delete/{{ book.id }}">Delete</a></td>
+	</tr>
+{% endfor %}
+</table>	
 {% endblock content %}
