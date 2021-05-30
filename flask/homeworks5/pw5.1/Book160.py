@@ -55,7 +55,6 @@ def loginView():
 
 		password = form.password.data
 
-
 		user = User.query.filter_by(email=email).first()
 		if not user:
 			flash("Login failed.")
@@ -116,7 +115,6 @@ def custom404(e):
 @app.route("/book/add", methods=["GET", "POST"])
 def addView(id=None):
 	loginRequired()
-
 	book = Book()
 	if id:
 		book = Book.query.get_or_404(id)

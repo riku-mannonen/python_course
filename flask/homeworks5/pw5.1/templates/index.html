@@ -3,22 +3,10 @@
 
 {% block content %}
 
-<table style width=100%>
-	<tr>
-		<th>Id</th>
-		<th>Book</th>
-		<th>Plot</th>
-		<th></th>
-		<th></th>
-	</tr>
 {% for book in books %}
-	<tr>
-		<td>{{ book.id }}</td>
-		<td>{{ book.name }}</td>
-		<td>{{ book.plot }}</td>
-		<td><a href="/edit/{{ book.id }}">Edit</a></td>
-		<td><a href="/delete/{{ book.id }}">Delete</a></td>
-	</tr>
+
+		<h2>Name: {{ book.name }}</h2>
+		<p>{{ book.plot }}</p>
+		<p><a href="/book/{{ book.id }}/edit">Edit - </a><a href="/book/{{ book.id }}/delete">Delete</a></p>
 {% endfor %}
-</table>	
 {% endblock content %}
