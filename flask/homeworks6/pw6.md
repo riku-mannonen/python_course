@@ -1,1 +1,1 @@
-![](/home/riku/kuvat/vika.png)
+![](vika.png)
