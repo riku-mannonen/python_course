@@ -8,6 +8,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 app.secret_key = "04kqiiche9Ea3Ph@ig??qasd540)gd?M0iivee"
+app.config["SQLALCHEMY_DATABASE_URI"] = 'postgresql:///riku'
 db = SQLAlchemy(app)
 
 class Task(db.Model):
