@@ -9,22 +9,22 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 app.secret_key = "04kqiiche9Ea3Ph@ig??qasd540)gd?M0iivee"
-app.config["SQLALCHEMY_DATABASE_URI"] = 'postgresql:///wsgiriku'
+
 db = SQLAlchemy(app)
 
 class Book(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	name = db.Column(db.String, nullable=False)
 	author = db.Column(db.String, nullable=False)
-	rating = db.Column(db.Integer, nullable=False)
-
-
-BookForm = model_form(Book, base_class=FlaskForm, db_session=db.session)
+	rating  = db.Column(db.Integer, nullable=False)
+	user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable = False)
+	user = db.relationship("User", backref=db.backref("Tasks", lazy=True))
 
 class User(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	email = db.Column(db.String, nullable=False, unique=True)
 	passwordHash = db.Column(db.String, nullable=False)
+
 
 	def setPassword(self, password):
 		self.passwordHash = generate_password_hash(password)
@@ -32,10 +32,13 @@ class User(db.Model):
 	def checkPassword(self, password):
 		return check_password_hash(self.passwordHash, password)
 
+
+
+BookForm = model_form(Book, base_class=FlaskForm, db_session=db.session)
+
 class UserForm(FlaskForm):
 	email = StringField("email", validators=[validators.Email()])
 	password = PasswordField("password", validators=[validators.InputRequired()])
-
 
 def currentUser():
 	try:
@@ -148,7 +151,7 @@ def deleteView(id):
 
 @app.route("/")
 def indexView():
-	books = Book.query.all()
+	books = Book.query.filter_by(user=currentUser()).all()
 	return render_template("index.html", books=books)
 
 if __name__ == "__main__":
