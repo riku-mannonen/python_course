@@ -35,12 +35,11 @@
 			<a href="/book/add">Add book review</a> - 
 			{% if currentUser() %}
 				<a href="/user/logout">Logout</a> - 
-				{{ currentUser().email }} - 
+				{{ currentUser().email }}  
 			{% else %}
 				<a href="/user/login">Login</a> - 
 				<a href="/user/register">Register</a>
 			{% endif %}
-			<input type="text" placeholder="Search..">
 		</nav>
 
 		<h1>{{ title }}</h1>

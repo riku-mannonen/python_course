@@ -18,7 +18,7 @@ class Book(db.Model):
 	author = db.Column(db.String, nullable=False)
 	rating  = db.Column(db.Integer, nullable=False)
 	user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable = False)
-	user = db.relationship("User", backref=db.backref("Tasks", lazy=True))
+	user = db.relationship("User", backref=db.backref("Books", lazy=True))
 
 class User(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
@@ -34,7 +34,7 @@ class User(db.Model):
 
 
 
-BookForm = model_form(Book, base_class=FlaskForm, db_session=db.session)
+BookForm = model_form(Book, base_class=FlaskForm, db_session=db.session, exclude="user")
 
 class UserForm(FlaskForm):
 	email = StringField("email", validators=[validators.Email()])
@@ -131,6 +131,7 @@ def addView(id=None):
 
 	if fields.validate_on_submit():
 		fields.populate_obj(book)
+		book.user = User.query.get(session["uid"])
 		db.session.add(book)
 		db.session.commit()
 
@@ -151,7 +152,7 @@ def deleteView(id):
 
 @app.route("/")
 def indexView():
-	books = Book.query.filter_by(user=currentUser()).all()
+	books = Book.query.all()
 	return render_template("index.html", books=books)
 
 if __name__ == "__main__":
